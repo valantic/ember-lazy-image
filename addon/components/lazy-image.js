@@ -18,13 +18,13 @@ export default Component.extend(InViewportMixin, ImageLoadMixin, LazyImageMixin,
   }),
 
   _setupAttributes() {
-    const img       = this.$('img');
+    const img       = this.querySelector('img');
     const component = this;
     const keys = Object.keys || Ember.keys;
 
     keys(component).forEach((key) => {
       if (key.substr(0, 5) === 'data-' && !key.match(/Binding$/)) {
-        img.attr(key, component.get(key));
+        img.setAttribute(key, component.get(key));
       }
     });
   },
