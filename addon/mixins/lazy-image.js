@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import { computed, set, get, Mixin, setProperties } from '@ember/object';
+import { dasherize } from '@ember/string';
 import Cache from '../lib/cache';
-
-const { on, get, set, Mixin, computed, setProperties } = Ember;
-const dasherize = Ember.String.dasherize;
 
 export default Mixin.create({
   didInsertElement() {

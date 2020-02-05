@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const { on, set, run, Mixin, computed, getWithDefault } = Ember;
+import { on } from '@ember/object/evented';
+import { computed, set, Mixin, getWithDefault } from '@ember/object';
+import { run } from '@ember/runloop';
 
 export default Mixin.create({
   loaded:      false,

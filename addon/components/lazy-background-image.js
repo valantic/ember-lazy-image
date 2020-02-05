@@ -1,10 +1,9 @@
-import Ember           from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
+import { htmlSafe } from '@ember/template';
 import ImageLoadMixin  from '../mixins/image-load';
 import LazyImageMixin  from '../mixins/lazy-image';
 import InViewportMixin from 'ember-in-viewport';
-
-const { htmlSafe } = Ember.String;
-const { computed, Component } = Ember;
 
 export default Component.extend(InViewportMixin, ImageLoadMixin, LazyImageMixin, {
   attributeBindings: ['width', 'height', 'style'],
@@ -20,9 +19,8 @@ export default Component.extend(InViewportMixin, ImageLoadMixin, LazyImageMixin,
 
   _setupAttributes() {
     const component = this;
-    const keys = Object.keys || Ember.keys;
 
-    keys(component).forEach((key) => {
+    Object.keys(component).forEach((key) => {
       if (key.substr(0, 5) === 'data-' && !key.match(/Binding$/)) {
         component.get('attributeBindings').pushObject(key);
       }
